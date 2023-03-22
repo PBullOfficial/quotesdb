@@ -1,13 +1,16 @@
 <?php 
+    require_once('../categories/index.php');
+    require_once('../categories/read.php');
+    require_once('../../config/Database.php');
+
     class Category {
         // DB Stuff
-        private $sonn;
+        private $conn;
         private $table = 'categories';
 
         // Properties
         public $id;
         public $name;
-        public $created_at;
 
         // Constructor with DB
         public function __contruct($db) {
@@ -17,14 +20,13 @@
         // Get categories
         public function read() {
             // Create query
-            $query - 'SELECT 
+            $query = 'SELECT 
                 id,
-                name,
-                created_at
+                category
             FROM
                 ' . $this->table . '
             ORDER BY
-                created_at DESC';
+                id DESC';
 
             // Prepare statement
             $stmt = $this->conn->prepare($query);
@@ -35,3 +37,5 @@
             return $stmt;
         }
     }
+
+?>
