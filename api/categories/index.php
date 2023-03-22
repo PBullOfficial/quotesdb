@@ -9,6 +9,12 @@ if ($method === 'OPTIONS') {
     header('Access-Control-Allow-Headers: Origin, Accept, Content-Type, X-Requested-With');
 }
 // And now you have your $method variable ready to go, too!
+
+require_once('../../config/Database.php');
+require_once('../../models/Quote.php');
+require_once('../../models/Author.php');
+require_once('../../models/Category.php');
+require_once('../../functions/isValid.php');
 ?>
 
 Deployed!
