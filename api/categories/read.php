@@ -4,6 +4,8 @@
     include_once '../../models/Category.php';
     include_once 'index.php';
 
+
+    
     // Category read query
     $result = $category->read();
     // Get row count
