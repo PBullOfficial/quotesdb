@@ -20,8 +20,6 @@ require_once('../../functions/isValid.php');
 $database = new Database();
 $db = $database->connect();
 
-// Instantiate category object
-$category = new Category($db);
 
 ?>
 

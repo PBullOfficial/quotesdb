@@ -5,6 +5,9 @@
     include_once 'index.php';
 
     // Category read query
+    
+    // Instantiate category object
+    $category = new Category($db);
     $result = $category->read();
     // Get row count
     $num = $result->rowCount();
