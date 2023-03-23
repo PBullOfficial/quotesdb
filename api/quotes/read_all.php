@@ -10,7 +10,7 @@
     $quote = new Quote($db);
 
     // Quotes query
-    $result = $quote->read();
+    $result = $quote->read_all();
     // Get row count
     $num = $result->rowCount();
 
