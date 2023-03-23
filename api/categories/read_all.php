@@ -12,7 +12,7 @@
 	$category = new Category($db);
 
     // Instantiate DB & connect
-    $result = $category->read();
+    $result = $category->read_all();
 
         // Get row count
         $num = $result->rowCount();
