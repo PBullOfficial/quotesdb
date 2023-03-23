@@ -1,8 +1,4 @@
 <?php 
-    require_once('../categories/index.php');
-    require_once('../categories/read.php');
-    require_once('../../config/Database.php');
-
     class Category {
         // DB Stuff
         private $conn;

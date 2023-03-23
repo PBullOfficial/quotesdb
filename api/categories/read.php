@@ -4,11 +4,12 @@
     include_once '../../models/Category.php';
     include_once 'index.php';
 
-    // Category read query
-    
-    // Instantiate category object
-    $category = new Category($db);
-    $result = $category->read();
+// Instantiate DB & connect
+$database = new Database();
+$db = $database->connect();
+$category = new Category($db);
+$result = $category->read();
+
     // Get row count
     $num = $result->rowCount();
 
@@ -22,7 +23,8 @@
             extract($row);
 
             $cat_item = array(
-
+                'id' => $id,
+                'category' => $category
             );
 
             // Push to "data"
