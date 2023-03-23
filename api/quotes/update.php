@@ -21,7 +21,7 @@
 	}
 
     // Update post
-    if($post->create()) {
+    if($quote->create()) {
         echo json_encode(
             array('message' => 'Post Updated')
         );
