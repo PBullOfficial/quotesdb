@@ -18,7 +18,11 @@ require_once('../../models/Author.php');
 require_once('../../models/Category.php');
 require_once('../../functions/isValid.php');
 
-
+    // Instantiate DB & connect
+	$database = new Database();
+	$db = $database->connect();
+	
+	$category = new Category($db);
 
 if ($method === 'GET') {
     if (parse_url($uri, PHP_URL_QUERY)) {
