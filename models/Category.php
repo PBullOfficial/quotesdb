@@ -22,7 +22,7 @@
             FROM
                 ' . $this->table . '
             ORDER BY
-                id DESC';
+                id';
 
             // Prepare statement
             $stmt = $this->conn->prepare($query);
