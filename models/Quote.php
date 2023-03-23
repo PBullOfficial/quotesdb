@@ -7,8 +7,8 @@
         // Quote Properties
         public $id;
         public $quote;
-        public $authorId;
-        public $categoryId;
+        public $author_id;
+        public $category_id;
 
         // Constructor with DB
         public function __contruct($db) {
@@ -16,7 +16,7 @@
         }
 
         // Get quotes
-        public function read() {
+        public function read_all() {
             // Create query
             $query = 'SELECT 
                 id,
