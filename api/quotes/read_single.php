@@ -4,19 +4,19 @@
     include_once '../../models/Quote.php';
 
     // Get ID
-    $post->id = isset($_GET['id']) ? $_GET['id'] : die();
+    $quote->id = isset($_GET['id']) ? $_GET['id'] : die();
 
     // Get quote
-    $post->read_single();
+    $quote->read_single();
 
     // Create array
     $quote_arr = array(
-        'id' => $post->id,
-        'quote' => $post->quote,
-        'authorId' => $post->authorId,
-        'author' => $post->author,
-        'categoryId' => $post->categoryId,
-        'category' => $post->category
+        'id' => $quote->id,
+        'quote' => $quote->quote,
+        'authorId' => $quote->authorId,
+        'author' => $quote->author,
+        'categoryId' => $quote->categoryId,
+        'category' => $quote->category
     );
 
     // Make JSON
