@@ -9,12 +9,12 @@
         public $category;
 
         // Constructor with DB
-        public function __contruct($db) {
-            $this->conn = $db;
-        }
+		public function __construct($db) {
+			$this->conn = $db;
+		}
 
         // Get categories
-        public function read() {
+        public function read_all() {
             // Create query
             $query = 'SELECT 
                 id,
@@ -33,5 +33,3 @@
             return $stmt;
         }
     }
-
-?>

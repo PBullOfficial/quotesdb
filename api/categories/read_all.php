@@ -6,6 +6,12 @@
     include_once '../../models/Category.php';
 
     // Instantiate DB & connect
+	$database = new Database();
+	$db = $database->connect();
+	
+	$category = new Category($db);
+
+    // Instantiate DB & connect
     $result = $category->read();
 
         // Get row count
