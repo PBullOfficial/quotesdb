@@ -6,4 +6,3 @@ function isValid($requested_id, $model){
       $result = $model->read_single();
       return $result;
     }
-?>
