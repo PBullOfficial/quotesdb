@@ -1,24 +1,23 @@
 <?php
     include_once '../../config/Database.php';
     include_once '../../models/Quote.php';
+    // Instantiate DB & connect
+    $database = new Database();
+    $db = $database->connect();
+
+    // Instantiate blog post object
+    $post = new Post($db);
 
     // Get raw posted data
     $data = json_decode(file_get_contents("php://input"));
 
     // Set ID to update
-    $quote->id = $data->id;
+    $post->id = $data->id;
 
-    $quote->title = $data->title;
-    $quote->body = $data->body;
-    $quote->author = $data->authore;
-    $quote->categoryId = $data->categoryId;
-
-	if(!isset($data->id) || !isset($data->quote) || !isset($data->author_id) || !isset($data->category_id)) {
-		echo json_encode(
-			array('message' => 'Missing Required Parameters')
-		);
-		exit();
-	}
+    $post->title = $data->title;
+    $post->body = $data->body;
+    $post->author = $data->authore;
+    $post->categoryId = $data->categoryId;
 
     // Update post
     if($quote->create()) {
