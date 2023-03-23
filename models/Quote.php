@@ -7,7 +7,9 @@
         // Quote Properties
         public $id;
         public $quote;
+        public $author;
         public $author_id;
+        public $category;
         public $category_id;
 
         // Constructor with DB
@@ -19,12 +21,20 @@
         public function read_all() {
             // Create query
             $query = 'SELECT 
-                id,
-                quote,
-                authorId,
-                categoryId
+                quotes.id,
+                quotes.quote,
+                authors.author,
+                categories.category
             FROM
                 ' . $this->table . ' 
+            INNER JOIN
+                authors
+            ON
+                quotes.author_id = authors.id
+            INNER JOIN
+                categories
+            ON
+                quotes.category_id = categories.id
             ORDER BY
                 id DESC';
 
