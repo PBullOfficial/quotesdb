@@ -2,13 +2,6 @@
     include_once '../../config/Database.php';
     include_once '../../models/Quote.php';
     
-    // Instantiate DB & connect
-    $database = new Database();
-    $db = $database->connect();
-
-    // Instantiate quote object
-    $quote = new Quote($db);
-
     // Quotes query
     $result = $quote->read_all();
     // Get row count
