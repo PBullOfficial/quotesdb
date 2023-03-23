@@ -1,4 +1,3 @@
-
 <?php  
 function isValid($requested_id, $model){
       // Set the id on the model

@@ -39,5 +39,3 @@ elseif ($method === 'PUT') {
 elseif ($method === 'DELETE') {
     require('delete.php');
 }
-
-?>
