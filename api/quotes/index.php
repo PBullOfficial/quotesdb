@@ -22,7 +22,7 @@ require_once('../../functions/isValid.php');
 	$database = new Database();
 	$db = $database->connect();
 	
-	$quote = new Quote($db);
+	$post = new Quote($db);
 
 if ($method === 'GET') {
     if (parse_url($uri, PHP_URL_QUERY)) {
