@@ -1,45 +1,43 @@
-<?php
-// Please put the following at the top of each of the index.php files: 
-header('Access-Control-Allow-Origin: *');
-header('Content-Type: application/json');
-$method = $_SERVER['REQUEST_METHOD'];
-$uri = $_SERVER['REQUEST_URI'];
+<?php 
+    // Headers
+    header('Access-Control-Allow-Origin: *');
+    header('Content-Type: application/json');
 
-if ($method === 'OPTIONS') {
-    header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE');
-    header('Access-Control-Allow-Headers: Origin, Accept, Content-Type, X-Requested-With');
-    exit();
-}
-// And now you have your $method variable ready to go, too!
+    // 
+    $method = $_SERVER['REQUEST_METHOD']; 
 
-require_once('../../config/Database.php');
-require_once('../../models/Quote.php');
-require_once('../../models/Author.php');
-require_once('../../models/Category.php');
-require_once('../../functions/isValid.php');
-
-    // Instantiate DB & connect
-	$database = new Database();
-	$db = $database->connect();
-	
-	$quote = new Quote($db);
-
-if ($method === 'GET') {
-    if (parse_url($uri, PHP_URL_QUERY)) {
-        require('read_single_php');
-    } else {
-        require('read_all.php');
+    if ($method === 'OPTIONS') {
+        header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE');
+        header('Access-Control-Allow-Headers: Origin, Accept, Content-Type, X-Requested-With');
+        return;
     }
-}
 
-elseif ($method === 'POST') {
-    require('create.php');
-}
+    // Include config and model files
+    include_once '../../config/Database.php';
+    include_once '../../models/Quote.php';
 
-elseif ($method === 'PUT') {
-    require('update.php');
-}
+    // Instantiate DB object
+    $database = new Database();
+    $db = $database->connect();
 
-elseif ($method === 'DELETE') {
-    require('delete.php');
-}
+    // Instantiate blog post object
+    $post = new Post($db);
+
+    // Get raw posted data
+    $data = json_decode(file_get_contents("php://input"));
+
+    $post->title = $data->title;
+    $post->body = $data->body;
+    $post->author = $data->authore;
+    $post->categoryId = $data->categoryId;
+
+    //Create post
+    if($post->create()) {
+        echo json_encode(
+            array('message' => 'Post Created')
+        );
+    } else {
+        echo json_encode(
+            array('message' => 'Post Not Created')
+        );
+    }
