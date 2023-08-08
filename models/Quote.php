@@ -19,6 +19,7 @@
 
         // Get quotes
         public function read_all() {
+            
             // Create query
             $query = 'SELECT 
                 quotes.id,
@@ -49,7 +50,8 @@
 
         // Get Single Quote
         public function read_single() {
-                // Create query
+            
+            // Create query
             $query = 'SELECT 
                 c.category as category_name,
                 p.id,
@@ -84,6 +86,7 @@
 
         // Create Quote
         public function create() {
+            
             // Create query
             $query = 'INSERT INTO ' . 
                     $this->table . '
@@ -119,6 +122,7 @@
     
         // Update Quote
         public function update() {
+            
             // Create query
             $query = 'UPDATE ' . 
                     $this->table . '
@@ -160,6 +164,7 @@
 
         // Delete Quote
         public function delete() {
+            
             // Create query
             $query = 'DELETE FROM ' . $this->table . 'WHERE id = :id';
 
