@@ -3,7 +3,7 @@
     header('Access-Control-Allow-Origin: *');
     header('Content-Type: application/json');
 
-    // Get the HTTP method
+    // Get HTTP method
     $method = $_SERVER['REQUEST_METHOD']; 
 
     if ($method === 'OPTIONS') {
@@ -24,7 +24,7 @@
     $author_obj = new Author($db);
     $author_obj->id = intval($_GET["id"]);
 
-    // Authors GET 
+    // Authors GET method
     if ($method === 'GET' && !isset($_GET["id"])) {
         $result = $author_obj->read();
         $num = $result->rowCount();
